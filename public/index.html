@@ -9,16 +9,71 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <script type="text/javascript">
             var i = 0;
+            $(document).ready(function(){
+                $('#submit').click(function(){
+                    now.execute($('#dirContent').val());
+                });
+            });
             now.showDirContent = function (dirContent)
             {
                 $('#dirContent').empty();
                 for (i=0;i<dirContent.length;i++){
-                    $('#dirContent').append(dirContent[i] + '<br/>');
+                    $('#dirContent').append('<option>' +dirContent[i] + '</option>');
                 }
+            }
+            now.updateOutput = function (cmdOut)
+            {
+                $('#output').empty();
+                $('#output').append(cmdOut);
             }
         </script>
     </head>
     <body>
-                <div id ="dirContent"></div>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Foo Shell</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+        </div><!--/span-->
+        <div class="span7">
+          <div class="hero-unit">
+                <h2>Commands</h2> 
+                <select id="dirContent" multiple = "multiple"></select>
+                <br/>
+                <button class="btn btn-large btn-primary" type="button" id="submit">SUBMIT</button>
+            <br/>
+            <br/>
+            <h2>Output</h2> 
+            <textarea id="output" rows="5"></textarea>
+
+          </div>
+        </div>
+        <div class="span2">
+        </div>  
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
     </body>
 </html>

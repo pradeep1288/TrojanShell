@@ -7,7 +7,7 @@ var express = require('express'),
 
 var PORT = 8000;
 var dirContent;
-var cmdOut;
+var cmdOut = 0;
 
 var app = express.createServer();
 app.configure(function(){
@@ -24,10 +24,15 @@ var everyone = nowjs.initialize(server);
 everyone.now.update = function(){
     this.now.showDirContent(dirContent);
 }
+
+everyone.now.execute = function(cmd){
+    cmd = '/var/www/scripts/' + cmd
+    cmdOut = execSync.stdout(cmd);
+    this.now.updateOutput(cmdOut);
+}
 nowjs.on('connect', function(){
-    dirContent = fs.readdirSync('/');
-    console.log(dirContent);
-    console.log(dirContent.length);
+    console.log("Reaeding the contents of /var/www");
+    dirContent = fs.readdirSync('/var/www/scripts');
     this.now.update();
 });
 
