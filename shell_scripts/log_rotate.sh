@@ -14,7 +14,7 @@ do
     cat /dev/null > $logfile
     gzip -f -9 $tmplogfile
     if [ $? == 0 ]; then
-        echo "$tmplogfile created at $LOGDIR"
+        echo "$tmplogfile.gz created at $LOGDIR"
     else
         echo "Something went wrong..."
     fi
