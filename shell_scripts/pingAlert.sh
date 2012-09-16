@@ -7,14 +7,15 @@
 HOST="usc.edu"
 COUNT=1
 
-SUBJECT="Ping failed"
+SUCCESS="Ping Successful"
+FAILED="Ping Failed"
 EMAILID="ttrojan@usc.edu"
 count=$(ping -c $COUNT $HOST | grep 'received' | awk -F',' '{ print $2 }' | awk '{ print $1 }')
 
 if [ $count -eq 0 ]; then
-    echo "$HOST is down" | mail -s "$SUBJECT" $EMAILID
-    echo "\nMail Sent to $EMAILID. Down"
+    echo "$HOST is down" | mail -s "$FAILED" $EMAILID
+    echo "\n$FAILED. Mail Sent to $EMAILID."
 else
-    echo "$HOST is up" | mail -s "$SUBJECT" $EMAILID
-    echo "\nMail Sent to $EMAILID. Up"
+    echo "$HOST is up" | mail -s "$SUCCESS" $EMAILID
+    echo "\n$SUCCESS. Mail Sent to $EMAILID."
 fi
