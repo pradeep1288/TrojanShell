@@ -8,9 +8,14 @@ LOGDIR="/var/www/logs"
 
 find $LOGDIR -name '*.log' -type f -size +10M | while read logfile
 do
-    echo $logfile
+    echo "Found $logfile"
     tmplogfile=$logfile.$DATE
     cp $logfile $tmplogfile
     cat /dev/null > $logfile
     gzip -f -9 $tmplogfile
+    if [ $? == 0 ]; then
+        echo "$tmplogfile created at $LOGDIR"
+    else
+        echo "Something went wrong..."
+    fi
 done

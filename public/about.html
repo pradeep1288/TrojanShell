@@ -7,26 +7,6 @@
         </script>
         <script type="text/javascript" src="nowjs/now.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-        <script type="text/javascript">
-            var i = 0;
-            $(document).ready(function(){
-                $('#submit').click(function(){
-                    now.execute($('#dirContent').val());
-                });
-            });
-            now.showDirContent = function (dirContent)
-            {
-                $('#dirContent').empty();
-                for (i=0;i<dirContent.length;i++){
-                    $('#dirContent').append('<option>' +dirContent[i] + '</option>');
-                }
-            }
-            now.updateOutput = function (cmdOut)
-            {
-                $('#output').empty();
-                $('#output').append(cmdOut);
-            }
-        </script>
     </head>
     <body>
             <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,7 +20,7 @@
           <a class="brand" href="#">Trojan Shell</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="index.html">Home</a></li>
               <li><a href="about.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -55,15 +35,8 @@
         </div><!--/span-->
         <div class="span7">
           <div class="hero-unit">
-                <h2>Commands</h2> 
-                <select id="dirContent" multiple = "multiple"></select>
-                <br/>
-                <button class="btn btn-large btn-primary" type="button" id="submit">SUBMIT</button>
-            <br/>
-            <br/>
-            <h2>Output</h2> 
-            <textarea id="output" rows="5"></textarea>
-
+                <h2>Trojan Shell</h2> 
+                <p>Description goes here....</p>    
           </div>
         </div>
         <div class="span2">
